@@ -109,7 +109,7 @@ if __name__ == '__main__':
             return metric.compute(predictions=predictions, references=labels)
 
         training_args = TrainingArguments(
-            output_dir=f'/home/wangyukun/workspace/wassa/checkpoint{i}',  # output directory
+            output_dir=f'./wassa/checkpoint{i}',  # output directory
             num_train_epochs=3,  # total number of training epochs
             per_device_train_batch_size=4,  # batch size per device during training
             per_device_eval_batch_size=16,  # batch size for evaluation
