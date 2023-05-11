@@ -12,9 +12,9 @@ from transformers import Trainer, TrainingArguments
 import evaluate
 
 # 读取训练和验证数据集
-train = pd.read_csv("/home/wangyukun/workspace/wassa/corpus/WASSA23_essay_level_with_labels_train.tsv", delimiter="\t")
-val = pd.read_csv("/home/wangyukun/workspace/wassa/corpus/dev/emp-full_eval.tsv")
-test = pd.read_csv("/home/wangyukun/workspace/wassa/corpus/dev/WASSA23_essay_level_dev.tsv", delimiter="\t")
+train = pd.read_csv("./corpus/WASSA23_essay_level_with_labels_train.tsv", delimiter="\t")
+val = pd.read_csv("./corpus/dev/emp-full_eval.tsv")
+test = pd.read_csv("./corpus/dev/WASSA23_essay_level_dev.tsv", delimiter="\t")
 
 device = "cuda" if torch.cuda.is_available() else "cpu"
 
@@ -100,7 +100,7 @@ if __name__ == '__main__':
 
 
         training_args = TrainingArguments(
-            output_dir=f'/home/wangyukun/workspace/wassa/checkpoint{i}',  # output directory
+            output_dir=f'./checkpoint{i}',  # output directory
             num_train_epochs=3,  # total number of training epochs
             per_device_train_batch_size=2,  # batch size per device during training
             per_device_eval_batch_size=1,  # batch size for evaluation
@@ -133,5 +133,5 @@ if __name__ == '__main__':
         pre.append(test_pred)
 
     result_output = pd.DataFrame(data={"empathy": pre[0], "distress": pre[1]})
-    result_output.to_csv("/home/wangyukun/workspace/wassa/result/best-predictions_EMP.tsv", index=False, header=None, sep="\t")
+    result_output.to_csv("./result/best-predictions_EMP.tsv", index=False, header=None, sep="\t")
     logging.info('result saved!')
