@@ -150,5 +150,5 @@ if __name__ == '__main__':
     result_output = pd.DataFrame(data={"personality_conscientiousness": jieguo[0], "personality_openess": jieguo[1],
                                        "personality_extraversion": jieguo[2],
                                        "personality_agreeableness": jieguo[3], "personality_stability": jieguo[4]})
-    result_output.to_csv("/home/wangyukun/workspace/wassa/result/best-predictions_PER.tsv", index=False, header=None, sep="\t")
+    result_output.to_csv("./wassa/result/best-predictions_PER.tsv", index=False, header=None, sep="\t")
     logging.info('result saved!')
